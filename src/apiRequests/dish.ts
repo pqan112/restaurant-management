@@ -1,3 +1,4 @@
+import { TAGS } from '@/constants/type'
 import http from '@/lib/http'
 import {
   CreateDishBodyType,
@@ -7,7 +8,12 @@ import {
 } from '@/schemaValidations/dish.schema'
 
 const dishApiRequest = {
-  list: () => http.get<DishListResType>('/dishes'),
+  list: () =>
+    http.get<DishListResType>('/dishes', {
+      next: {
+        tags: [TAGS.DISHES],
+      },
+    }),
   add: (body: CreateDishBodyType) => http.post<DishResType>('/dishes', body),
   getDish: (id: number) => http.get<DishResType>(`dishes/${id}`),
   updateDish: (id: number, body: UpdateDishBodyType) =>

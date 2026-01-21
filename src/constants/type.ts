@@ -75,3 +75,7 @@ export const QueryKey = {
   // Dish
   DISHES: 'dishes',
 } as const
+
+export const TAGS = {
+  DISHES: 'dishes',
+} as const
